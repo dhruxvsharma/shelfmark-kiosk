@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Shelfmark — find any book in the library and walk straight to it." />
+    <title>Shelfmark — Library Kiosk</title>
+  </head>
+  <body>
+    <div id="viewport">
+      <div id="stage">
+        <!-- ================= TOP BAR ================= -->
+        <header class="top">
+          <button class="wordmark" id="homeBtn" aria-label="Go to start">
+            <span class="wm">Shelf<i>mark</i></span>
+          </button>
+          <div class="sep"></div>
+          <div class="lib"><b id="libName"></b><span id="libMeta"></span></div>
+          <div class="clock"><b id="clockT">--:--</b><span id="clockD"></span></div>
+        </header>
+
+        <!-- ================= HOME ================= -->
+        <section class="screen" id="s-home">
+          <div class="left">
+            <div class="eyebrow">Find it yourself — no queue, no asking around</div>
+            <h1>Find any book.<br /><em>Walk straight</em> to it.</h1>
+            <button class="searchbox" id="openSearch">
+              <span>Search a title, author or subject</span>
+              <i class="go"
+                ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M20 20l-3.6-3.6" /></svg
+              ></i>
+            </button>
+            <div class="chips" id="homeChips"></div>
+          </div>
+          <div class="howto">
+            <div>
+              <b>01</b>
+              <p><strong>Pick a book.</strong> We show the exact floor, aisle and row.</p>
+            </div>
+            <div>
+              <b>02</b>
+              <p><strong>Scan the QR.</strong> The route moves to your phone.</p>
+            </div>
+            <div>
+              <b>03</b>
+              <p><strong>Borrow at the shelf.</strong> Scan the book, you're done.</p>
+            </div>
+          </div>
+          <div class="shelfwrap">
+            <div class="eyebrow">Browse the shelves</div>
+            <div class="hint">Tap a spine</div>
+            <div class="spines" id="spines"></div>
+            <div class="shelfline"></div>
+          </div>
+        </section>
+
+        <!-- ================= SEARCH ================= -->
+        <section class="screen" id="s-search">
+          <button class="back" data-back>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 18l-6-6 6-6" /></svg
+            >Back
+          </button>
+          <div class="head">
+            <div class="field">
+              <span class="q" id="qText"></span><span class="caret"></span
+              ><span class="ph" id="qPh">Type a title, author or subject</span>
+            </div>
+          </div>
+          <div class="eyebrow count" id="qCount"></div>
+          <div class="results" id="results"></div>
+          <div class="kbd" id="kbd"></div>
+        </section>
+
+        <!-- ================= CATEGORY ================= -->
+        <section class="screen" id="s-list">
+          <button class="back" data-back>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 18l-6-6 6-6" /></svg
+            >Back
+          </button>
+          <div class="side">
+            <div class="band" id="lBand"></div>
+            <h2 id="lTitle"></h2>
+            <dl class="facts" id="lFacts"></dl>
+            <p class="note">Every title here sits in the same zone. Tap one to see its exact shelf.</p>
+          </div>
+          <div class="grid" id="lGrid"></div>
+        </section>
+
+        <!-- ================= BOOK DETAIL ================= -->
+        <section class="screen" id="s-book">
+          <button class="back" data-back>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 18l-6-6 6-6" /></svg
+            >Back
+          </button>
+          <div class="cvbox">
+            <div class="disc"></div>
+            <div class="cv" id="bCover"></div>
+          </div>
+          <div class="info">
+            <div class="eyebrow" id="bCat"></div>
+            <h2 id="bTitle"></h2>
+            <div class="by" id="bBy"></div>
+            <p class="sum" id="bSum"></p>
+            <dl class="facts" id="bFacts"></dl>
+          </div>
+          <div class="where" id="bWhere">
+            <div class="eyebrow">Where it is</div>
+            <div class="avail"><b id="bAvail"></b><span id="bAvailOf"></span></div>
+            <div class="stat" id="bStat"><i></i><span></span></div>
+            <div class="chain" id="bChain"></div>
+            <button class="cta" id="bGo">
+              <span id="bGoLabel">Show me where</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </button>
+            <button class="cta2" id="bReserve"></button>
+          </div>
+          <div class="also">
+            <div class="lbl">Also in<br />this zone</div>
+            <div class="row" id="bAlso"></div>
+          </div>
+        </section>
+
+        <!-- ================= LOCATION VIEWER ================= -->
+        <section class="screen" id="s-locate">
+          <canvas id="gl" width="1920" height="984"></canvas>
+          <div class="glerr" id="glErr">
+            The 3D view couldn't start on this device.<br />The location details on the left are still accurate.
+          </div>
+          <div class="tag" id="tagHere">
+            <div class="pill">You are here</div>
+            <div class="stem"></div>
+          </div>
+          <div class="tag" id="tagDest">
+            <div class="pill" id="tagDestTxt"></div>
+            <div class="stem"></div>
+          </div>
+
+          <aside class="panel">
+            <div class="bk">
+              <div class="cv" id="pCover"></div>
+              <div><b id="pTitle"></b><span id="pAuthor"></span></div>
+            </div>
+            <div class="steps" id="pSteps"></div>
+            <div class="elev">
+              <div class="lbl"><span id="pElevL"></span><span>left → right</span></div>
+              <svg id="pElev" viewBox="0 0 512 102" width="512" height="102"></svg>
+            </div>
+            <div class="take">
+              <div class="code" id="qr"></div>
+              <div class="tx">
+                <b>Take the route with you</b>
+                <span>Point your phone camera at the code. Follow the orange line.</span>
+                <div class="stats">
+                  <div><b id="pMin"></b><span>walk</span></div>
+                  <div><b id="pDist"></b><span>distance</span></div>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <button class="back" data-back>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 18l-6-6 6-6" /></svg
+            >Back
+          </button>
+          <div class="dragtip">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M8 13V5.5a1.5 1.5 0 013 0V12M11 11.5V4a1.5 1.5 0 013 0v7.5M14 11V6a1.5 1.5 0 013 0v7c0 4-2.5 7-6 7-2.5 0-4-1.2-5.5-3.5L4 13.8a1.5 1.5 0 012.5-1.6L8 14"
+              /></svg
+            >Drag to look around
+          </div>
+          <div class="viewbar">
+            <div class="seg" id="seg">
+              <button data-view="floor">Floor plan</button>
+              <button data-view="aisle">Aisle</button>
+              <button data-view="shelf">Shelf</button>
+            </div>
+            <button class="iconbtn" id="replay">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.8L3 8" />
+                <path d="M3 3v5h5" /></svg
+              >Replay route
+            </button>
+          </div>
+        </section>
+
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

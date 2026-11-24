@@ -1,0 +1,56 @@
+/* Generated typographic book covers */
+.cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-radius: 2px 6px 6px 2px;
+  overflow: hidden;
+  box-shadow:
+    inset 4px 0 0 rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.cover .c-in {
+  position: absolute;
+  inset: 8% 9%;
+  display: flex;
+  flex-direction: column;
+}
+.cover .c-t {
+  font-family: var(--serif);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+.cover .c-a {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: auto;
+}
+.cover.s1 .c-t {
+  font-family: var(--sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  margin-top: auto;
+}
+.cover.s1 .c-a {
+  margin-top: 0;
+  order: -1;
+}
+.cover.s2 .c-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 46%;
+}
+.cover.s2 .c-in {
+  top: 52%;
+}
+.cover.s2 .c-t {
+  font-style: italic;
+}
+.cv {
+  container-type: inline-size;
+}

@@ -1,0 +1,18 @@
+/* Design tokens — colours, type families. Change the look of the whole kiosk here. */
+:root {
+  --ink: #0e0e0d;
+  --ink2: #181716;
+  --ink3: #232220;
+  --line: #34322e;
+  --paper: #f1ede4;
+  --paper2: #e4ded1;
+  --paper3: #d6cfbf;
+  --mute: #9c978c;
+  --mute-p: #5c584f;
+  --accent: #ff4d1a;
+  --ok: #6fcf8e;
+  --ok-p: #2e7d4f;
+  --serif: 'Instrument Serif', 'Times New Roman', serif;
+  --sans: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+}

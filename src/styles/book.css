@@ -1,0 +1,241 @@
+/* Book detail page */
+#s-book {
+  background: var(--ink);
+  color: var(--paper);
+}
+#s-book .cvbox {
+  position: absolute;
+  left: 96px;
+  top: 144px;
+  width: 500px;
+  height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#s-book .cvbox .disc {
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: var(--ink2);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+#s-book .cvbox .cv {
+  position: relative;
+  width: 380px;
+  box-shadow:
+    0 40px 80px -24px rgba(0, 0, 0, 0.85),
+    0 10px 20px -8px rgba(0, 0, 0, 0.6);
+}
+#s-book .info {
+  position: absolute;
+  left: 680px;
+  top: 136px;
+  width: 640px;
+}
+#s-book .info .eyebrow {
+  color: var(--mute);
+}
+#s-book h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 88px;
+  line-height: 0.94;
+  letter-spacing: -0.025em;
+  margin: 20px 0 20px;
+}
+#s-book .by {
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+#s-book .by b {
+  color: var(--paper);
+  font-weight: 700;
+}
+#s-book .sum {
+  font-size: 24px;
+  line-height: 1.4;
+  margin-top: 32px;
+  color: var(--paper2);
+}
+#s-book .facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 32px;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+#s-book .facts dt {
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 6px;
+}
+#s-book .facts dd {
+  font-size: 22px;
+  font-weight: 500;
+}
+#s-book .facts dd.mono {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 21px;
+}
+#s-book .where {
+  position: absolute;
+  right: 96px;
+  top: 120px;
+  width: 440px;
+  background: var(--ink2);
+  color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 36px;
+}
+#s-book .where .avail {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 14px 0 4px;
+}
+#s-book .where .avail b {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1;
+}
+#s-book .where .avail span {
+  font-size: 20px;
+  color: var(--mute);
+}
+#s-book .where .stat {
+  font-size: 19px;
+  color: var(--mute);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#s-book .where .stat i {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background: var(--ok);
+}
+#s-book .where.out .stat i {
+  background: var(--mute);
+}
+#s-book .chain {
+  margin: 28px 0;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+}
+#s-book .chain div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+#s-book .chain span {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+#s-book .chain b {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.cta {
+  width: 100%;
+  height: 96px;
+  border-radius: 48px;
+  background: var(--accent);
+  color: var(--ink);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.cta svg {
+  width: 30px;
+  height: 30px;
+}
+.cta2 {
+  width: 100%;
+  height: 72px;
+  border-radius: 36px;
+  border: 1.5px solid var(--line);
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.cta2 svg {
+  width: 24px;
+  height: 24px;
+}
+#s-book .also {
+  position: absolute;
+  left: 680px;
+  right: 96px;
+  bottom: 56px;
+  display: flex;
+  align-items: flex-end;
+  gap: 32px;
+}
+#s-book .also .lbl {
+  width: 150px;
+  flex: 0 0 150px;
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mute);
+  line-height: 1.5;
+  padding-bottom: 6px;
+}
+#s-book .also .row {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  flex: 1;
+  border-bottom: 8px solid var(--ink3);
+  padding-left: 8px;
+}
+#s-book .also .mini {
+  box-shadow: inset 0 0 0 1px rgba(241, 237, 228, 0.14);
+  height: 150px;
+  width: 52px;
+  border-radius: 2px 2px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+#s-book .also .mini span {
+  writing-mode: vertical-rl;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 100%;
+}

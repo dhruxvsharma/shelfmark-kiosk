@@ -1,0 +1,74 @@
+/* Top bar: wordmark, library name, clock */
+.top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  padding: 0 72px;
+  gap: 28px;
+  z-index: 50;
+  background: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  cursor: pointer;
+  color: var(--paper);
+}
+.wordmark .wm {
+  font-family: var(--serif);
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.wordmark .wm i {
+  font-style: italic;
+  color: var(--accent);
+}
+.top .sep {
+  width: 1px;
+  height: 40px;
+  background: var(--line);
+}
+.top .lib {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.top .lib b {
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+.top .lib span {
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.top .clock {
+  margin-left: auto;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.top .clock b {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: 0.02em;
+}
+.top .clock span {
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}

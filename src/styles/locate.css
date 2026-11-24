@@ -1,0 +1,317 @@
+/* 3D location viewer: panel, steps, shelf elevation, QR, controls, floating tags, toast */
+#s-locate {
+  background: #0b0b0a;
+}
+#gl {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 984px;
+  display: block;
+  cursor: grab;
+}
+#gl.drag {
+  cursor: grabbing;
+}
+.panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 640px;
+  background: rgba(14, 14, 13, 0.96);
+  border-right: 1px solid var(--line);
+  padding: 128px 56px 36px 72px;
+  display: flex;
+  flex-direction: column;
+}
+.panel .bk {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.panel .bk .cv {
+  width: 62px;
+  flex: 0 0 62px;
+}
+.panel .bk b {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.panel .bk span {
+  display: block;
+  font-size: 18px;
+  color: var(--mute);
+  margin-top: 6px;
+}
+.steps {
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.step {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: center;
+  height: 60px;
+  border-bottom: 1px solid var(--line);
+  opacity: 0.28;
+  transition: opacity 0.5s ease;
+}
+.step.on {
+  opacity: 1;
+}
+.step .k {
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.step .k i {
+  width: 8px;
+  height: 8px;
+  background: var(--line);
+  transition: background 0.4s;
+}
+.step.on .k i {
+  background: var(--accent);
+}
+.step .v {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  white-space: nowrap;
+}
+.step .v b {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+.step .v span {
+  font-size: 19px;
+  color: var(--mute);
+}
+.step .v.mono b {
+  font-family: var(--mono);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.elev {
+  margin-top: 18px;
+}
+.elev .lbl {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 10px;
+}
+.take {
+  margin-top: auto;
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
+.take .code {
+  width: 168px;
+  height: 168px;
+  flex: 0 0 168px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+}
+.take .code svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.take .tx {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.take .tx > b {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.take .tx > span {
+  font-size: 17px;
+  color: var(--mute);
+  margin-top: 6px;
+  line-height: 1.3;
+}
+.take .stats {
+  margin-top: auto;
+  display: flex;
+  gap: 28px;
+}
+.take .stats b {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 46px;
+  line-height: 1;
+}
+.take .stats span {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+#s-locate .back {
+  top: 40px;
+}
+.viewbar {
+  position: absolute;
+  left: 640px;
+  right: 0;
+  bottom: 48px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  pointer-events: none;
+}
+.seg {
+  pointer-events: auto;
+  display: flex;
+  padding: 6px;
+  border-radius: 40px;
+  background: rgba(14, 14, 13, 0.9);
+  border: 1px solid var(--line);
+}
+.seg button {
+  height: 64px;
+  padding: 0 30px;
+  border-radius: 32px;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--mute);
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+.seg button.on {
+  background: var(--paper);
+  color: var(--ink);
+}
+.iconbtn {
+  pointer-events: auto;
+  height: 76px;
+  padding: 0 28px;
+  border-radius: 38px;
+  background: rgba(14, 14, 13, 0.9);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.iconbtn svg {
+  width: 24px;
+  height: 24px;
+}
+.dragtip {
+  position: absolute;
+  right: 48px;
+  top: 40px;
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.dragtip svg {
+  width: 20px;
+  height: 20px;
+}
+.tag {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transform: translate(-50%, -100%);
+  transition: opacity 0.3s;
+}
+.tag .pill {
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.tag .stem {
+  width: 2px;
+  height: 22px;
+  margin: 0 auto;
+}
+#tagHere .pill {
+  background: var(--paper);
+  color: var(--ink);
+}
+#tagHere .stem {
+  background: var(--paper);
+}
+#tagDest .pill {
+  background: var(--accent);
+  color: var(--ink);
+}
+#tagDest .stem {
+  background: var(--accent);
+}
+.toast {
+  position: absolute;
+  left: 50%;
+  top: 128px;
+  transform: translate(-50%, -20px);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 18px 28px;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  opacity: 0;
+  transition: all 0.35s ease;
+  z-index: 60;
+  pointer-events: none;
+}
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.glerr {
+  position: absolute;
+  left: 640px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--mute);
+  font-size: 22px;
+  line-height: 1.4;
+}
