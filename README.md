@@ -233,8 +233,6 @@ The visual language comes from **book spines**: the home screen navigation is a 
 - [ ] **Multiple floors** with lift and stair transitions in 3D.
 
 ## Credits
-
-- Concept, UX and visual design: **Nischey**, B.Des Communication Design, Manipal University Jaipur.
 - Book titles, authors and dates are real works, used to make the catalogue believable. Summaries are original. Covers are generated typographic designs, not reproductions.
 - Fonts: Instrument Serif, Inter Tight, JetBrains Mono (SIL Open Font License), via Fontsource.
 - three.js (MIT), qrcode-generator (MIT), Vite (MIT).
